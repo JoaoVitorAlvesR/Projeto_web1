@@ -150,7 +150,7 @@ module.exports = class UserController {
 
     const { name, email, phone, password, confirmpassword } = req.body;
 
-    let image = "";
+    let image = '';
 
     //validations
     if (!name) {
@@ -178,19 +178,38 @@ module.exports = class UserController {
     user.email = email;
 
     if (!phone) {
-      res.status(422).json({ message: "O telefone é obrigatório" });
-      return;
+      res.status(422).json({ message: 'O telefone é obrigatório!' })
+      return
     }
 
     user.phone = phone
 
-    if (!password) {
-      res.status(422).json({ message: "A senha é obrigatória" });
+    if(password != confirmpassword){
+      res.status(422).json({ 
+        message : 'As senhas não conferem!'
+      });
       return;
+    } else if(password == confirmpassword && password != null){
+      //creating password
+      const salt = await bcrypt.genSalt(12);
+      const passwordHash = await bcrypt.hash(password, salt);
+
+      user.password = passwordHash
     }
-    if (!confirmpassword) {
-      res.status(422).json({ message: "A confirmação de senha é obrigatória" });
-      return;
+
+    try{
+      //returns user update data
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true },
+      )
+      res.status(200).json({
+        message: 'Usuário atualizado com sucesso!',
+      })
+    }catch (err){
+      res.status(500).json ({message: err})
+      return
     }
   }
 };
