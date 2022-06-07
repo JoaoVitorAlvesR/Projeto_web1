@@ -1,10 +1,18 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+//components
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
+import Container from "./components/layout/Container";
+import Message from "./components/layout/Message";
+
+
+//pages
 import Login from "./components/pages/Auth/Login";
 import Register from "./components/pages/Auth/Register";
 import Home from "./components/pages/Home";
-import Container from "./components/layout/Container";
+
+//context
 import { UserProvider } from "./context/UserContext";
 
 function App() {
@@ -12,6 +20,7 @@ function App() {
     <Router>
       <UserProvider>
         <Navbar />
+        <Message/>
         <Container>
           <Switch>
             <Route path="/login">
