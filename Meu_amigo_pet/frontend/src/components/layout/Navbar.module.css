@@ -2,16 +2,18 @@
   display: flex;
   justify-content: space-between;
   padding: 1em 1.5em;
-  background-color: #ffd400;
+  background-color: #FFD400;
   color: #16479d;
 }
+
 .navbar_logo {
   display: flex;
   align-items: center;
 }
+
 .navbar_logo img {
   width: 40px;
-  margin-right: 0.8em;
+  margin-right: .8em;
 }
 
 .navbar ul {
@@ -26,16 +28,16 @@
   color: #16479d;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.5s;
-  padding: 0.5em 0.8em;
+  transition: .5s;
+  padding: .5em .8em;
   border-radius: 5px;
 }
 
 .navbar li:hover {
   background-color: #16479d;
-  color: #fff;
+  color: #FFF;
 }
+
 .navbar li:hover > a {
-  background-color: #16479d;
-  color: #fff;
+  color: #FFF;
 }

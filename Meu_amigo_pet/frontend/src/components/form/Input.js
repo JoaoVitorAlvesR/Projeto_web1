@@ -1,11 +1,11 @@
-import styles from "./input.module.css";
+import styles from './Input.module.css'
 
 function Input({
   type,
   text,
   name,
   placeholder,
-  handleOnchange,
+  handleOnChange,
   value,
   multiple,
 }) {
@@ -17,12 +17,12 @@ function Input({
         name={name}
         id={name}
         placeholder={placeholder}
-        onChange={handleOnchange}
+        onChange={handleOnChange}
         value={value}
-        {...(multiple ? {multiple} : '')}
+        {...(multiple ? { multiple } : '')}
       />
     </div>
-  );
+  )
 }
 
-export default Input;
+export default Input
